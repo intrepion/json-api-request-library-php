@@ -3,7 +3,7 @@
     "description": "JSON API request library written in PHP",
     "type": "library",
     "require": {
-        "php": "^5.3"
+        "php": ">=5.3.9"
     },
     "require-dev": {
         "phpunit/phpunit": "^4.8",
