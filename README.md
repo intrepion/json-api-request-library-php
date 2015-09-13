@@ -18,3 +18,9 @@ JSON API request library written in PHP
 
 ### Wercker
 [![wercker status](https://app.wercker.com/status/043adb5be0f9536f34d647eca0905ffe/s "wercker status")](https://app.wercker.com/project/bykey/043adb5be0f9536f34d647eca0905ffe)
+
+### Shippable
+[![Shippable](https://app.shippable.com/projects/55f50ed21895ca447414e7f2)](https://img.shields.io/shippable/55f50ed21895ca447414e7f2.svg)
+
+### Semaphore
+[![Build Status](https://semaphoreci.com/api/v1/projects/5a6c1a4f-2ff6-4404-aab4-7f053cb63c76/538852/badge.svg)](https://semaphoreci.com/intrepion/json-api-request-library-php)
