@@ -23,9 +23,7 @@ build:
     - script:
         name: install packages
         code: |
-            sudo apt-get update -y
-            sudo apt-get install curl
-            sudo apt-get install php
+            sudo apt-get install curl php -y
     - script:
         name: download Composer
         code: curl -sS https://getcomposer.org/installer | php
