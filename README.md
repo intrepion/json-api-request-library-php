@@ -5,6 +5,7 @@ JSON API request library written in PHP
 
 Measurement | Service | Badge
 --- | --- | ---
+chat | gitter | [![Join the chat at https://gitter.im/intrepion/json-api-request-library-php](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/intrepion/json-api-request-library-php?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 coverage | Code Climate | [![Test Coverage](https://codeclimate.com/github/intrepion/json-api-request-library-php/badges/coverage.svg)](https://codeclimate.com/github/intrepion/json-api-request-library-php/coverage)
 coverage | Codecov | [![codecov.io](http://codecov.io/github/intrepion/json-api-request-library-php/coverage.svg?branch=master)](http://codecov.io/github/intrepion/json-api-request-library-php?branch=master)
 coverage | Coveralls | [![Coverage Status](https://coveralls.io/repos/intrepion/json-api-request-library-php/badge.svg?branch=master&service=github)](https://coveralls.io/github/intrepion/json-api-request-library-php?branch=master)
