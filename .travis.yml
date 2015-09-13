@@ -1,0 +1,20 @@
+language: php
+
+php:
+    - 5.3
+    - 5.4
+    - 5.5
+    - 5.6
+    - nightly
+    - hhvm
+
+install:
+    - composer install --prefer-dist
+
+script:
+    - ./vendor/bin/phpunit --configuration app --coverage-clover build/logs/clover.xml
+
+after_script:
+    - ./bin/coveralls --verbose
+    - bash <(curl -s https://codecov.io/bash)
+    - ./bin/test-reporter
