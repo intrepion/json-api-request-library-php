@@ -13,4 +13,4 @@ before_script:
     - composer install --prefer-source
 
 script:
-    - ./vender/bin/phpunit --configuration app --log-junit shippable/testresults/junit.xml --coverage-xml shippable/codecoverage
+    - ./vendor/bin/phpunit --configuration app --log-junit shippable/testresults/junit.xml --coverage-xml shippable/codecoverage
