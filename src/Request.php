@@ -2,10 +2,22 @@
 
 namespace Intrepion\JsonApi\Request;
 
-class RequestJson
+/**
+ * Request
+ */
+class Request
 {
+    /**
+     * @var string
+     */
     protected $resourceName;
 
+    /**
+     * Set resourceName
+     *
+     * @param string $resourceName
+     * @return RequestJson
+     */
     public function setResourceName($resourceName)
     {
         if (!is_string($resourceName)) {
@@ -16,6 +28,11 @@ class RequestJson
         return $this;
     }
 
+    /**
+     * Get resourceName
+     *
+     * @return string
+     */
     public function getResourceName()
     {
         return $this->resourceName;
