@@ -20,7 +20,13 @@ JSON API request library written in PHP
 [![wercker status](https://app.wercker.com/status/043adb5be0f9536f34d647eca0905ffe/s "wercker status")](https://app.wercker.com/project/bykey/043adb5be0f9536f34d647eca0905ffe)
 
 ### Shippable
-[![Shippable](https://app.shippable.com/projects/55f50ed21895ca447414e7f2)](https://img.shields.io/shippable/55f50ed21895ca447414e7f2.svg)
+[![Shippable](https://img.shields.io/shippable/55f50ed21895ca447414e7f2.svg)](https://app.shippable.com/projects/55f50ed21895ca447414e7f2)
 
 ### Semaphore
 [![Build Status](https://semaphoreci.com/api/v1/projects/5a6c1a4f-2ff6-4404-aab4-7f053cb63c76/538852/badge.svg)](https://semaphoreci.com/intrepion/json-api-request-library-php)
+
+### Codeship
+[![Codeship](https://codeship.com/projects/d5bed880-3c4a-0133-97e3-1276d5d0a1e7/status?branch=master)](https://codeship.com/projects/102239https://codeship.com/projects/d5bed880-3c4a-0133-97e3-1276d5d0a1e7/status?branch=master)
+
+### Snap CI
+[![Build Status](https://snap-ci.com/intrepion/json-api-request-library-php/branch/master/build_image)](https://snap-ci.com/intrepion/json-api-request-library-php/branch/master)
