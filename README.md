@@ -30,3 +30,6 @@ JSON API request library written in PHP
 
 ### Snap CI
 [![Build Status](https://snap-ci.com/intrepion/json-api-request-library-php/branch/master/build_image)](https://snap-ci.com/intrepion/json-api-request-library-php/branch/master)
+
+### drone.io
+[![Build Status](https://drone.io/github.com/intrepion/json-api-request-library-php/status.png)](https://drone.io/github.com/intrepion/json-api-request-library-php/latest)
