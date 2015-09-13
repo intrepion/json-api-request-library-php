@@ -14,6 +14,7 @@ quality | Code Climate | [![Code Climate](https://codeclimate.com/github/intrepi
 quality | SensioLabs Insight | [![SensioLabsInsight](https://insight.sensiolabs.com/projects/dac4ef49-5816-4965-a89a-32a13e5bff6a/mini.png)](https://insight.sensiolabs.com/projects/dac4ef49-5816-4965-a89a-32a13e5bff6a)
 quality | Scrutinizer | [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/intrepion/json-api-request-library-php/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/intrepion/json-api-request-library-php/?branch=master)
 task | Waffle | [![Stories in Ready](https://badge.waffle.io/intrepion/json-api-request-library-php.svg?label=ready&title=Ready)](http://waffle.io/intrepion/json-api-request-library-php)
+test | AppVeyor | [![Build status](https://ci.appveyor.com/api/projects/status/mr36jexr56c6jxxm?svg=true)](https://ci.appveyor.com/project/intrepion/json-api-request-library-php)
 test | Circle CI | [![Circle CI](https://circleci.com/gh/intrepion/json-api-request-library-php.svg?style=svg)](https://circleci.com/gh/intrepion/json-api-request-library-php)
 test | Codeship | [![Codeship](https://codeship.com/projects/d5bed880-3c4a-0133-97e3-1276d5d0a1e7/status?branch=master)](https://codeship.com/projects/102239https://codeship.com/projects/d5bed880-3c4a-0133-97e3-1276d5d0a1e7/status?branch=master)
 test | Drone | [![Build Status](https://drone.io/github.com/intrepion/json-api-request-library-php/status.png)](https://drone.io/github.com/intrepion/json-api-request-library-php/latest)
