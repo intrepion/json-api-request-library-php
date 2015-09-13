@@ -7,9 +7,9 @@ environment:
     PHP: "C:/PHP"
 init:
   - cinst php
-  - SET PATH=C:\php\;%PATH%
+  - SET PATH=C:\tools\php\;%PATH%
 install:
-  - cd c:\php
+  - cd c:\tools\php
   - copy php.ini-production php.ini
   - echo date.timezone="UTC" >> php.ini
   - echo extension_dir=ext >> php.ini
