@@ -15,3 +15,6 @@ JSON API request library written in PHP
 ### Code Climate
 [![Code Climate](https://codeclimate.com/github/intrepion/json-api-request-library-php/badges/gpa.svg)](https://codeclimate.com/github/intrepion/json-api-request-library-php)
 [![Test Coverage](https://codeclimate.com/github/intrepion/json-api-request-library-php/badges/coverage.svg)](https://codeclimate.com/github/intrepion/json-api-request-library-php/coverage)
+
+### Wercker
+[![wercker status](https://app.wercker.com/status/043adb5be0f9536f34d647eca0905ffe/s "wercker status")](https://app.wercker.com/project/bykey/043adb5be0f9536f34d647eca0905ffe)
