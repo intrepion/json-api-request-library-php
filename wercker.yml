@@ -20,6 +20,11 @@ build:
     # Read more about steps on our dev center:
     # http://devcenter.wercker.com/docs/steps/index.html
   steps:
+    - script: install packages
+        name: |
+            sudo apt-get update -y
+            sudo apt-get install curl
+            sudo apt-get install php
     - script:
         name: download Composer
         code: curl -sS https://getcomposer.org/installer | php
