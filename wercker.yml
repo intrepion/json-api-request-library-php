@@ -2,7 +2,7 @@
 # Docker Hub https://registry.hub.docker.com/_/debian/
 # Read more about containers on our dev center
 # http://devcenter.wercker.com/docs/containers/index.html
-box: debian
+box: wercker/php
 # You can also use services such as databases. Read more on our dev center:
 # http://devcenter.wercker.com/docs/services/index.html
 # services:
@@ -21,6 +21,12 @@ build:
     # http://devcenter.wercker.com/docs/steps/index.html
   steps:
     - script:
-        name: composer install
-        code: |
-          composer install --prefer-dist
+        name: install dependencies
+        code: |-
+            composer install --no-interaction
+    - script:
+        name: Serve application
+        code: php -S localhost:8000 >> /dev/null &
+    - script:
+        name: PHPUnit integration tests
+        code: phpunit --configuration phpunit.xml
