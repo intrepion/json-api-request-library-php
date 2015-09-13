@@ -35,4 +35,4 @@ build:
         code: php -S localhost:8000 >> /dev/null &
     - script:
         name: PHPUnit integration tests
-        code: phpunit --configuration phpunit.xml
+        code: ./vendor/bin/phpunit
