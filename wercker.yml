@@ -29,7 +29,7 @@ build:
         code: curl -sS https://getcomposer.org/installer | php
     - script:
         name: install dependencies
-        code: composer.phar install --no-interaction
+        code: php composer.phar install --no-interaction
     - script:
         name: Serve application
         code: php -S localhost:8000 >> /dev/null &
