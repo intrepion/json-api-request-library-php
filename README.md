@@ -33,3 +33,6 @@ JSON API request library written in PHP
 
 ### drone.io
 [![Build Status](https://drone.io/github.com/intrepion/json-api-request-library-php/status.png)](https://drone.io/github.com/intrepion/json-api-request-library-php/latest)
+
+### Circle CI
+[![Circle CI](https://circleci.com/gh/intrepion/json-api-request-library-php.svg?style=svg)](https://circleci.com/gh/intrepion/json-api-request-library-php)
