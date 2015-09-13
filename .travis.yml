@@ -12,7 +12,7 @@ install:
     - composer install --prefer-dist
 
 script:
-    - ./vendor/bin/phpunit --configuration app --coverage-clover build/logs/clover.xml
+    - ./vendor/bin/phpunit --coverage-clover build/logs/clover.xml
 
 after_script:
     - ./bin/coveralls --verbose
