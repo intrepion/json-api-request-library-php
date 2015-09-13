@@ -22,3 +22,6 @@ test | Shippable | [![Shippable](https://img.shields.io/shippable/55f50ed21895ca
 test | Snap CI | [![Build Status](https://snap-ci.com/intrepion/json-api-request-library-php/branch/master/build_image)](https://snap-ci.com/intrepion/json-api-request-library-php/branch/master)
 test | Travis CI | [![Build Status](https://travis-ci.org/intrepion/json-api-request-library-php.svg?branch=master)](https://travis-ci.org/intrepion/json-api-request-library-php)
 test | Wercker | [![wercker status](https://app.wercker.com/status/043adb5be0f9536f34d647eca0905ffe/s "wercker status")](https://app.wercker.com/project/bykey/043adb5be0f9536f34d647eca0905ffe)
+tip | Flattr | [![Flattr this git repo](http://api.flattr.com/button/flattr-badge-large.png)](https://flattr.com/submit/auto?user_id=intrepion&url=https://github.com/intrepion/json-api-request-library-php&title=json-api-request-library-php&language=PHP&tags=github&category=software)
+tip | Gratipay | [![Gratipay](https://img.shields.io/gratipay/intrepion.svg)](https://gratipay.com/~intrepion/)
+trend | Bitdeli | [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/intrepion/json-api-request-library-php/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
