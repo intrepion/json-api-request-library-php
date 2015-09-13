@@ -15,6 +15,6 @@ script:
     - ./vendor/bin/phpunit --coverage-clover build/logs/clover.xml
 
 after_script:
-    - ./bin/coveralls --verbose
+    - ./vendor/bin/coveralls --verbose
     - bash <(curl -s https://codecov.io/bash)
-    - ./bin/test-reporter
+    - ./vendor/bin/test-reporter
