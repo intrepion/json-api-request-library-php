@@ -1,0 +1,23 @@
+{
+    "name": "intrepion/json-api-request-library-php",
+    "description": "JSON API request library written in PHP",
+    "type": "library",
+    "require": {
+        "php": "^5.3"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^4.8"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Oliver Forral",
+            "email": "intrepion@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Intrepion\\JsonApi\\Request\\": "src/"
+        }
+    }
+}
