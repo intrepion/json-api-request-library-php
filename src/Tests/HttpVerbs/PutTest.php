@@ -1,11 +1,11 @@
 <?php
 
-namespace Intrepion\JsonApi\Request\Tests;
+namespace Intrepion\JsonApi\Request\Tests\HttpVerbs;
 
-use Intrepion\JsonApi\Request\Put;
+use Intrepion\JsonApi\Request\HttpVerbs\Put;
 
 /**
- * @coversDefaultClass \Intrepion\JsonApi\Request\Put
+ * @coversDefaultClass \Intrepion\JsonApi\Request\HttpVerbs\Put
  */
 class PutTest extends \PHPUnit_Framework_TestCase
 {

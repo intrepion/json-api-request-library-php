@@ -1,13 +1,13 @@
 <?php
 
-namespace Intrepion\JsonApi\Request\Tests;
+namespace Intrepion\JsonApi\Request\Tests\HttpVerbs;
 
-use Intrepion\JsonApi\Request\Get;
+use Intrepion\JsonApi\Request\HttpVerbs\Post;
 
 /**
- * @coversDefaultClass \Intrepion\JsonApi\Request\Get
+ * @coversDefaultClass \Intrepion\JsonApi\Request\HttpVerbs\Post
  */
-class GetTest extends \PHPUnit_Framework_TestCase
+class PostTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * @covers ::getResourceName
@@ -15,7 +15,7 @@ class GetTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetAndGetResourceNameWithAString()
     {
-        $jsonApi = new Get();
+        $jsonApi = new Post();
         $resourceName = 'articles';
         $jsonApi->setResourceName($resourceName);
         $this->assertEquals($resourceName, $jsonApi->getResourceName());
@@ -28,7 +28,7 @@ class GetTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetAndGetResourceNameWithANull()
     {
-        $jsonApi = new Get();
+        $jsonApi = new Post();
         $resourceName = null;
         $jsonApi->setResourceName($resourceName);
         $this->assertEquals($resourceName, $jsonApi->getResourceName());
@@ -41,7 +41,7 @@ class GetTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetAndGetResourceNameWithAnInteger()
     {
-        $jsonApi = new Get();
+        $jsonApi = new Post();
         $resourceName = 4;
         $jsonApi->setResourceName($resourceName);
         $this->assertEquals($resourceName, $jsonApi->getResourceName());

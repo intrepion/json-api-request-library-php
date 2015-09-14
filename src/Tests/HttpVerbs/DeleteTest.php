@@ -1,11 +1,11 @@
 <?php
 
-namespace Intrepion\JsonApi\Request\Tests;
+namespace Intrepion\JsonApi\Request\Tests\HttpVerbs;
 
-use Intrepion\JsonApi\Request\Delete;
+use Intrepion\JsonApi\Request\HttpVerbs\Delete;
 
 /**
- * @coversDefaultClass \Intrepion\JsonApi\Request\Delete
+ * @coversDefaultClass \Intrepion\JsonApi\Request\HttpVerbs\Delete
  */
 class DeleteTest extends \PHPUnit_Framework_TestCase
 {

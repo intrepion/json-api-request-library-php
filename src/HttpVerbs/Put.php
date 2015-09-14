@@ -1,6 +1,6 @@
 <?php
 
-namespace Intrepion\JsonApi\Request;
+namespace Intrepion\JsonApi\Request\HttpVerbs;
 
 /**
  * Put
