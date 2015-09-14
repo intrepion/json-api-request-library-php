@@ -3,9 +3,9 @@
 namespace Intrepion\JsonApi\Request;
 
 /**
- * Request
+ * Get
  */
-class Request
+class Get
 {
     /**
      * @var string
