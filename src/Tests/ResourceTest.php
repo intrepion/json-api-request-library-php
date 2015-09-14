@@ -37,4 +37,22 @@ class ResourceTest extends \PHPUnit_Framework_TestCase
         $name = 4;
         $resource = new Resource($name);
     }
+
+    /**
+     * @expectedException \InvalidArgumentException
+     */
+    public function testGetNameWithEmptyString()
+    {
+        $name = '';
+        $resource = new Resource($name);
+    }
+
+    /**
+     * @expectedException \InvalidArgumentException
+     */
+    public function testGetNameWithWhitespaceString()
+    {
+        $name = 'hello world';
+        $resource = new Resource($name);
+    }
 }

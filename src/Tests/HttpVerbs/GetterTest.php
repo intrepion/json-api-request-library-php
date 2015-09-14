@@ -26,7 +26,7 @@ class GetterTest extends \PHPUnit_Framework_TestCase
      * @covers ::addInclude
      * @covers ::generateUri
      */
-    public function testAddIncludeWithResource()
+    public function testAddIncludeWithOneResource()
     {
         $resource = new Resource('articles');
         $jsonApi = new Getter($resource);
@@ -36,6 +36,23 @@ class GetterTest extends \PHPUnit_Framework_TestCase
             $jsonApi->addInclude($resource);
         }
         $uri = '/articles?include=author';
+        $this->assertEquals($uri, $jsonApi->generateUri());
+    }
+
+    /**
+     * @covers ::addInclude
+     * @covers ::generateUri
+     */
+    public function testAddIncludeWithManyResource()
+    {
+        $resource = new Resource('articles');
+        $jsonApi = new Getter($resource);
+        $includes = array('author', 'tags');
+        foreach($includes as $include) {
+            $resource = new Resource($include);
+            $jsonApi->addInclude($resource);
+        }
+        $uri = '/articles?include=author,tags';
         $this->assertEquals($uri, $jsonApi->generateUri());
     }
 }

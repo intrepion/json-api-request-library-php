@@ -21,6 +21,13 @@ class Resource
         if (!is_string($name)) {
             throw new \InvalidArgumentException('name should be a string');
         }
+        if ('' === $name) {
+            throw new \InvalidArgumentException('name should not be an empty string');
+        }
+        $matchesLength = preg_match('/\s/', $name);
+        if (0 < $matchesLength) {
+            throw new \InvalidArgumentException('name cannot have any whitespace');
+        }
         $this->name = $name;
     }
 

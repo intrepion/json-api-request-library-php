@@ -47,6 +47,9 @@ class Getter
         if (0 < $length) {
             $uri .= '?include=';
             for ($i = 0; $i < $length; $i++) {
+                if (0 < $i) {
+                    $uri .= ',';
+                }
                 $uri .= $this->includes[$i]->getName();
             }
         }
