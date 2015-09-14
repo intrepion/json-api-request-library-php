@@ -52,7 +52,7 @@ class GetterTest extends \PHPUnit_Framework_TestCase
             $resource = new Resource($include);
             $jsonApi->addInclude($resource);
         }
-        $uri = '/articles?include=author,tags';
+        $uri = '/articles?include=author%2Ctags';
         $this->assertEquals($uri, $jsonApi->generateUri());
     }
 }

@@ -42,16 +42,18 @@ class Getter
      */
     public function generateUri()
     {
-        $uri = '/' . $this->resource->getName();
+        $uri = '/' . rawurlencode($this->resource->getName());
         $length = count($this->includes);
         if (0 < $length) {
             $uri .= '?include=';
+            $include = '';
             for ($i = 0; $i < $length; $i++) {
                 if (0 < $i) {
-                    $uri .= ',';
+                    $include .= ',';
                 }
-                $uri .= $this->includes[$i]->getName();
+                $include .= $this->includes[$i]->getName();
             }
+            $uri .= urlencode($include);
         }
 
         return $uri;
