@@ -3,9 +3,9 @@
 namespace Intrepion\JsonApi\Request;
 
 /**
- * Get
+ * Put
  */
-class Get
+class Put
 {
     /**
      * @var string
@@ -16,7 +16,7 @@ class Get
      * Set resourceName
      *
      * @param string $resourceName
-     * @return Get
+     * @return Put
      */
     public function setResourceName($resourceName)
     {
