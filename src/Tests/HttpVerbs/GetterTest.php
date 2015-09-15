@@ -6,6 +6,7 @@ use Intrepion\JsonApi\Request\HttpVerbs\Getter;
 use Intrepion\JsonApi\Request\Field;
 use Intrepion\JsonApi\Request\Page;
 use Intrepion\JsonApi\Request\Resource;
+use Intrepion\JsonApi\Request\Sort;
 
 /**
  * @coversDefaultClass \Intrepion\JsonApi\Request\HttpVerbs\Getter
@@ -16,6 +17,9 @@ class GetterTest extends \PHPUnit_Framework_TestCase
     /**
      * @covers ::generateUri
      * @covers ::generateIncludeText
+     * @covers ::generateFieldText
+     * @covers ::generatePageText
+     * @covers ::generateSortText
      */
     public function testGenerateUriWithResource()
     {
@@ -28,6 +32,9 @@ class GetterTest extends \PHPUnit_Framework_TestCase
     /**
      * @covers ::addInclude
      * @covers ::generateIncludeText
+     * @covers ::generateFieldText
+     * @covers ::generatePageText
+     * @covers ::generateSortText
      * @covers ::generateUri
      */
     public function testAddIncludeWithOneResource()
@@ -48,6 +55,9 @@ class GetterTest extends \PHPUnit_Framework_TestCase
     /**
      * @covers ::addInclude
      * @covers ::generateIncludeText
+     * @covers ::generateFieldText
+     * @covers ::generatePageText
+     * @covers ::generateSortText
      * @covers ::generateUri
      */
     public function testAddIncludeWithManyResource()
@@ -72,6 +82,7 @@ class GetterTest extends \PHPUnit_Framework_TestCase
      * @covers ::generateIncludeText
      * @covers ::generateFieldText
      * @covers ::generatePageText
+     * @covers ::generateSortText
      * @covers ::generateUri
      */
     public function testAddIncludeWithSpecificFields()
@@ -119,6 +130,7 @@ class GetterTest extends \PHPUnit_Framework_TestCase
      * @covers ::generateIncludeText
      * @covers ::generateFieldText
      * @covers ::generatePageText
+     * @covers ::generateSortText
      * @covers ::generateUri
      */
     public function testGeneratePageText()
@@ -129,5 +141,64 @@ class GetterTest extends \PHPUnit_Framework_TestCase
         $getter->setPage($page);
         $url = '/articles?page[number]=3&page[size]=1';
         $this->assertEquals($url, $getter->generateUri());
+    }
+
+    /**
+     * @covers ::addInclude
+     * @covers ::addField
+     * @covers ::addSort
+     * @covers ::generateIncludeText
+     * @covers ::generateFieldText
+     * @covers ::generatePageText
+     * @covers ::generateSortText
+     * @covers ::generateUri
+     */
+    public function testAddIncludeWithSpecificFieldsSorted()
+    {
+        $resourceNames = array(
+            'articles',
+            'people',
+        );
+        $resources = array();
+        foreach ($resourceNames as $resourceName) {
+            $resources[$resourceName] = new Resource($resourceName);
+        }
+        $resourceFieldNames = array(
+            'articles' => array('title', 'body', 'author'),
+            'people' => array('name'),
+        );
+        $fields = array();
+        foreach ($resourceFieldNames as $resourceName => $fieldNames) {
+            foreach ($fieldNames as $fieldName) {
+                $resource = $resources[$resourceName];
+                $fields[$resourceName . '__' . $fieldName] = new Field($fieldName, $resource);
+            }
+        }
+        $sortFieldNames = array(
+            'articles__author' => false,
+            'articles__title' => true,
+        );
+        $resource = $resources['articles'];
+        $jsonApi = new Getter($resource);
+        $includes = array(
+            'author' => 'people',
+        );
+        foreach ($includes as $associationName => $resourceName) {
+            $resource = $resources[$resourceName];
+            $jsonApi->addInclude($associationName, $resource);
+        }
+        foreach ($resourceFieldNames as $resourceName => $fieldNames) {
+            foreach ($fieldNames as $fieldName) {
+                $field = $fields[$resourceName . '__' . $fieldName];
+                $jsonApi->addField($field);
+            }
+        }
+        foreach ($sortFieldNames as $sortFieldName => $direction) {
+            $field = $fields[$sortFieldName];
+            $sort = new Sort($field, $direction);
+            $jsonApi->addSort($sort);
+        }
+        $uri = '/articles?include=author&fields[articles]=title,body,author&fields[people]=name&sort=-author,title';
+        $this->assertEquals($uri, $jsonApi->generateUri());
     }
 }

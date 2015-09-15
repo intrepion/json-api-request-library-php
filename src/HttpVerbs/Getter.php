@@ -5,6 +5,7 @@ namespace Intrepion\JsonApi\Request\HttpVerbs;
 use Intrepion\JsonApi\Request\Field;
 use Intrepion\JsonApi\Request\Page;
 use Intrepion\JsonApi\Request\Resource;
+use Intrepion\JsonApi\Request\Sort;
 
 /**
  * Getter
@@ -32,6 +33,11 @@ class Getter
     protected $page;
 
     /**
+     * @var array
+     */
+    protected $sorts;
+
+    /**
      * Constructor
      *
      * @param Resource $resource
@@ -41,6 +47,7 @@ class Getter
         $this->fields = array();
         $this->includes = array();
         $this->resource = $resource;
+        $this->sorts = array();
     }
 
     /**
@@ -80,6 +87,18 @@ class Getter
     public function setPage(Page $page)
     {
         $this->page = $page;
+
+        return $this;
+    }
+
+    /**
+     * Add sort
+     * @param Sort $sort
+     * @return Getter
+     */
+    public function addSort(Sort $sort)
+    {
+        $this->sorts[] = $sort;
 
         return $this;
     }
@@ -156,6 +175,29 @@ class Getter
     }
 
     /**
+     * Generate sortText
+     *
+     * @return string
+     */
+    public function generateSortText()
+    {
+        if (0 === count($this->sorts)) {
+            return '';
+        }
+        $sortTexts = '';
+        foreach ($this->sorts as $sort) {
+            $sortText = '';
+            if (false === $sort->getAscending()) {
+                $sortText .= '-';
+            }
+            $sortText .= $sort->getField()->getName();
+            $sortTexts[] = $sortText;
+        }
+
+        return 'sort=' . implode(',', $sortTexts);
+    }
+
+    /**
      * Generate URI
      *
      * @return string
@@ -175,6 +217,10 @@ class Getter
         $pageText = $this->generatePageText();
         if ('' !== $pageText) {
             $queryString[] = $pageText;
+        }
+        $sortText = $this->generateSortText();
+        if ('' !== $sortText) {
+            $queryString[] = $sortText;
         }
         if (0 < count($queryString)) {
             $uri .= '?' . implode('&', $queryString);
