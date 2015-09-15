@@ -47,17 +47,25 @@ class Getter
         $this->includes[$associationName] = $include;
     }
 
+    public function addField(Field $field)
+    {
+        $resourceName = $field->getResource()->getName();
+        if (!array_key_exists($resourceName, $this->fields)) {
+            $this->fields[$resourceName] = array();
+        }
+        $this->fields[$resourceName][] = $field;
+    }
+
     /**
-     * Generate URI
+     * Generate includeText
      *
      * @return string
      */
-    public function generateUri()
+    public function generateIncludeText()
     {
-        $uri = '/' . $this->resource->getName();
         $includesLength = count($this->includes);
         if (0 < $includesLength) {
-            $includeText = '?include=';
+            $includeText = 'include=';
             $i = 0;
             foreach ($this->includes as $associationName => $resource) {
                 if (0 < $i) {
@@ -66,7 +74,58 @@ class Getter
                 $includeText .= $associationName;
                 $i++;
             }
-            $uri .= $includeText;
+
+            return $includeText;
+        } else {
+            return '';
+        }
+    }
+
+    /**
+     * Generate fieldText
+     *
+     * @return string
+     */
+    public function generateFieldText()
+    {
+        $fieldTexts = array();
+        foreach ($this->fields as $resourceName => $fields) {
+            $fieldArray = array_map(
+                function (Field $field)
+                {
+                    return $field->getName();
+                },
+                $fields
+            );
+            $fieldText = 'fields['
+                . $resourceName
+                . ']='
+                . implode(',', $fieldArray);
+            $fieldTexts[] = $fieldText;
+        }
+
+        return implode('&', $fieldTexts);
+    }
+
+    /**
+     * Generate URI
+     *
+     * @return string
+     */
+    public function generateUri()
+    {
+        $uri = '/' . $this->resource->getName();
+        $queryString = array();
+        $includeText = $this->generateIncludeText();
+        if ('' !== $includeText) {
+            $queryString[] = $includeText;
+        }
+        $fieldText = $this->generateFieldText();
+        if ('' !== $fieldText) {
+            $queryString[] = $fieldText;
+        }
+        if (0 < count($queryString)) {
+            $uri .= '?' . implode('&', $queryString);
         }
 
         return $uri;

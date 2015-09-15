@@ -14,6 +14,7 @@ class GetterTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * @covers ::generateUri
+     * @covers ::generateIncludeText
      */
     public function testGenerateUriWithResource()
     {
@@ -25,6 +26,7 @@ class GetterTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @covers ::addInclude
+     * @covers ::generateIncludeText
      * @covers ::generateUri
      */
     public function testAddIncludeWithOneResource()
@@ -44,6 +46,7 @@ class GetterTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @covers ::addInclude
+     * @covers ::generateIncludeText
      * @covers ::generateUri
      */
     public function testAddIncludeWithManyResource()
@@ -59,6 +62,53 @@ class GetterTest extends \PHPUnit_Framework_TestCase
             $jsonApi->addInclude($associationName, $resource);
         }
         $uri = '/articles?include=author,tag';
+        $this->assertEquals($uri, $jsonApi->generateUri());
+    }
+
+    /**
+     * @covers ::addInclude
+     * @covers ::addField
+     * @covers ::generateIncludeText
+     * @covers ::generateFieldText
+     * @covers ::generateUri
+     */
+    public function testAddIncludeWithSpecificFields()
+    {
+        $resourceNames = array(
+            'articles',
+            'people',
+        );
+        $resources = array();
+        foreach ($resourceNames as $resourceName) {
+            $resources[$resourceName] = new Resource($resourceName);
+        }
+        $resourceFieldNames = array(
+            'articles' => array('title', 'body', 'author'),
+            'people' => array('name'),
+        );
+        $fields = array();
+        foreach ($resourceFieldNames as $resourceName => $fieldNames) {
+            foreach ($fieldNames as $fieldName) {
+                $resource = $resources[$resourceName];
+                $fields[$resourceName . '__' . $fieldName] = new Field($fieldName, $resource);
+            }
+        }
+        $resource = $resources['articles'];
+        $jsonApi = new Getter($resource);
+        $includes = array(
+            'author' => 'people',
+        );
+        foreach ($includes as $associationName => $resourceName) {
+            $resource = $resources[$resourceName];
+            $jsonApi->addInclude($associationName, $resource);
+        }
+        foreach ($resourceFieldNames as $resourceName => $fieldNames) {
+            foreach ($fieldNames as $fieldName) {
+                $field = $fields[$resourceName . '__' . $fieldName];
+                $jsonApi->addField($field);
+            }
+        }
+        $uri = '/articles?include=author&fields[articles]=title,body,author&fields[people]=name';
         $this->assertEquals($uri, $jsonApi->generateUri());
     }
 }
