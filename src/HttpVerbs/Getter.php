@@ -2,6 +2,7 @@
 
 namespace Intrepion\JsonApi\Request\HttpVerbs;
 
+use Intrepion\JsonApi\Request\Field;
 use Intrepion\JsonApi\Request\Resource;
 
 /**
@@ -20,19 +21,30 @@ class Getter
     protected $includes;
 
     /**
+     * @var array
+     */
+    protected $fields;
+
+    /**
      * Constructor
      *
      * @param Resource $resource
      */
     public function __construct(Resource $resource)
     {
+        $this->fields = array();
         $this->includes = array();
         $this->resource = $resource;
     }
 
-    public function addInclude(Resource $include)
+    /**
+     * Add include
+     * @param string   $associationName
+     * @param Resource $include
+     */
+    public function addInclude($associationName, Resource $include)
     {
-        $this->includes[] = $include;
+        $this->includes[$associationName] = $include;
     }
 
     /**
@@ -42,18 +54,19 @@ class Getter
      */
     public function generateUri()
     {
-        $uri = '/' . rawurlencode($this->resource->getName());
-        $length = count($this->includes);
-        if (0 < $length) {
-            $uri .= '?include=';
-            $include = '';
-            for ($i = 0; $i < $length; $i++) {
+        $uri = '/' . $this->resource->getName();
+        $includesLength = count($this->includes);
+        if (0 < $includesLength) {
+            $includeText = '?include=';
+            $i = 0;
+            foreach ($this->includes as $associationName => $resource) {
                 if (0 < $i) {
-                    $include .= ',';
+                    $includeText .= ',';
                 }
-                $include .= $this->includes[$i]->getName();
+                $includeText .= $associationName;
+                $i++;
             }
-            $uri .= urlencode($include);
+            $uri .= $includeText;
         }
 
         return $uri;

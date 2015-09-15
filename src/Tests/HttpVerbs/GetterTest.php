@@ -3,6 +3,7 @@
 namespace Intrepion\JsonApi\Request\Tests\HttpVerbs;
 
 use Intrepion\JsonApi\Request\HttpVerbs\Getter;
+use Intrepion\JsonApi\Request\Field;
 use Intrepion\JsonApi\Request\Resource;
 
 /**
@@ -30,10 +31,12 @@ class GetterTest extends \PHPUnit_Framework_TestCase
     {
         $resource = new Resource('articles');
         $jsonApi = new Getter($resource);
-        $includes = array('author');
-        foreach($includes as $include) {
-            $resource = new Resource($include);
-            $jsonApi->addInclude($resource);
+        $includes = array(
+            'author' => 'people',
+        );
+        foreach($includes as $associationName => $resourceName) {
+            $resource = new Resource($resourceName);
+            $jsonApi->addInclude($associationName, $resource);
         }
         $uri = '/articles?include=author';
         $this->assertEquals($uri, $jsonApi->generateUri());
@@ -47,12 +50,15 @@ class GetterTest extends \PHPUnit_Framework_TestCase
     {
         $resource = new Resource('articles');
         $jsonApi = new Getter($resource);
-        $includes = array('author', 'tags');
-        foreach($includes as $include) {
-            $resource = new Resource($include);
-            $jsonApi->addInclude($resource);
+        $includes = array(
+            'author' => 'people',
+            'tag' => 'tags',
+        );
+        foreach($includes as $associationName => $resourceName) {
+            $resource = new Resource($associationName, $resourceName);
+            $jsonApi->addInclude($associationName, $resource);
         }
-        $uri = '/articles?include=author%2Ctags';
+        $uri = '/articles?include=author,tag';
         $this->assertEquals($uri, $jsonApi->generateUri());
     }
 }
