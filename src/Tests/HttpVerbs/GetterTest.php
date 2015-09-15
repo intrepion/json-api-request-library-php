@@ -4,6 +4,7 @@ namespace Intrepion\JsonApi\Request\Tests\HttpVerbs;
 
 use Intrepion\JsonApi\Request\HttpVerbs\Getter;
 use Intrepion\JsonApi\Request\Field;
+use Intrepion\JsonApi\Request\Page;
 use Intrepion\JsonApi\Request\Resource;
 
 /**
@@ -70,6 +71,7 @@ class GetterTest extends \PHPUnit_Framework_TestCase
      * @covers ::addField
      * @covers ::generateIncludeText
      * @covers ::generateFieldText
+     * @covers ::generatePageText
      * @covers ::generateUri
      */
     public function testAddIncludeWithSpecificFields()
@@ -110,5 +112,22 @@ class GetterTest extends \PHPUnit_Framework_TestCase
         }
         $uri = '/articles?include=author&fields[articles]=title,body,author&fields[people]=name';
         $this->assertEquals($uri, $jsonApi->generateUri());
+    }
+
+    /**
+     * @covers ::setPage
+     * @covers ::generateIncludeText
+     * @covers ::generateFieldText
+     * @covers ::generatePageText
+     * @covers ::generateUri
+     */
+    public function testGeneratePageText()
+    {
+        $resource = new Resource('articles');
+        $getter = new Getter($resource);
+        $page = new Page(3, 1);
+        $getter->setPage($page);
+        $url = '/articles?page[number]=3&page[size]=1';
+        $this->assertEquals($url, $getter->generateUri());
     }
 }
